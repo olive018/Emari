@@ -1,0 +1,257 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    background: #c8e6f5;
+}
+
+#info {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    z-index: 1;
+    color: #243746;
+}
+
+#info h1 {
+    font-size: 28px;
+    margin-bottom: 8px;
+}
+
+#info p {
+    font-size: 15px;
+}
+
+
+
+
+/* SOLAR INFORMATION CARD */
+
+.info-card {
+    position: fixed !important;
+    top: 20px !important;
+    right: 20px !important;
+    bottom: 20px !important;
+    width: 460px !important;
+    max-width: calc(100vw - 40px) !important;
+    height: auto !important;
+    box-sizing: border-box !important;
+    z-index: 100 !important;
+
+    padding: 36px !important;
+    overflow-y: auto !important;
+
+    background: #ffffff !important;
+    color: #263746 !important;
+    border-radius: 22px !important;
+    box-shadow: 0 8px 35px rgba(0, 0, 0, 0.25) !important;
+}
+
+.info-card.hidden {
+    display: none !important;
+}
+
+.close-card {
+    display: block;
+    margin-left: auto;
+    margin-bottom: 24px;
+    border: none;
+    background: transparent;
+    font-size: 36px;
+    cursor: pointer;
+    color: #526273;
+}
+
+.card-label {
+    color: #287b57;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1.8px;
+    margin-bottom: 14px;
+}
+
+.info-card h2 {
+    font-size: 34px;
+    margin-bottom: 18px;
+}
+
+.info-card h3 {
+    margin-top: 30px;
+    margin-bottom: 14px;
+    font-size: 20px;
+}
+
+.info-card p,
+.info-card li {
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+.info-card ol {
+    padding-left: 24px;
+}
+
+.info-card li {
+    margin-bottom: 14px;
+}
+
+@media (max-width: 600px) {
+    .info-card {
+        top: auto !important;
+        left: 12px !important;
+        right: 12px !important;
+        bottom: 12px !important;
+        width: auto !important;
+        max-width: none !important;
+        max-height: 75vh !important;
+        padding: 24px !important;
+    }
+}
+
+
+/* SOLAR ENERGY FLOW DIAGRAM */
+
+.energy-flow {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 18px;
+}
+
+.energy-step {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px;
+    border-radius: 14px;
+    border: 1px solid rgba(38, 55, 70, 0.08);
+    animation: energyAppear 0.6s ease both;
+}
+
+.energy-step strong {
+    display: block;
+    font-size: 15px;
+    margin-bottom: 4px;
+}
+
+.energy-step p {
+    margin: 0;
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+}
+
+.energy-icon {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    font-size: 27px;
+}
+
+.sunlight-step {
+    background: #FFF7DF;
+    animation-delay: 0.1s;
+}
+
+.sunlight-step .energy-icon {
+    background: #FFE9A8;
+}
+
+.panel-step {
+    background: #EAF3FF;
+    animation-delay: 0.3s;
+}
+
+.panel-step .energy-icon {
+    background: #D2E5FF;
+    color: #174A83;
+}
+
+.inverter-step {
+    background: #F0EAFE;
+    animation-delay: 0.5s;
+}
+
+.inverter-step .energy-icon {
+    background: #E0D4FF;
+    color: #6541A5;
+}
+
+.building-step {
+    background: #E7F6EC;
+    animation-delay: 0.7s;
+}
+
+.building-step .energy-icon {
+    background: #CBEBD5;
+    color: #237748;
+}
+
+.energy-arrow {
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #348B68;
+    font-size: 24px;
+    font-weight: bold;
+    animation: arrowPulse 1.2s ease-in-out infinite;
+}
+
+@keyframes energyAppear {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes arrowPulse {
+    0%, 100% {
+        opacity: 0.45;
+        transform: translateY(-2px);
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(2px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .energy-step,
+    .energy-arrow {
+        animation: none;
+    }
+}
+
+/* INTERACTION PROMPT */
+
+#prompt {
+    position: fixed;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 12px 24px;
+    background: rgba(36, 55, 70, 0.92);
+    color: #ffffff;
+    font-size: 16px;
+    border-radius: 999px;
+    z-index: 50;
+    pointer-events: none;
+}
+
+#prompt.hidden {
+    display: none;
+}
